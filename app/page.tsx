@@ -1,21 +1,14 @@
-"use client";
+import dynamic from 'next/dynamic';
 
-import { Room } from "./Room";
-import { CollaborativeApp } from "./CollaborativeApp";
-import Live from "@/components/Live";
-import Navbar from "@/components/Users/Navbar";
-import LeftSideBar from "@/components/LeftSideBar";
-import RightSidebar from "@/components/RightSidebar";
+// Dynamically import Room component (ensure default export)
+const Room = dynamic(() => import('./Room').then(mod => mod.Room), { ssr: false });
 
 export default function Page() {
   return (
-      <main className="h-screen overflow-hidden">
-        <Navbar />
-        <section className="flex h-full flex-row">
-          < LeftSideBar />
-          <Live />
-          <RightSidebar />
-        </section>
-      </main>
+    <div>
+      <Room>
+        <h1 className="text-5xl text-white">Liveblocks Figma Clone</h1>
+      </Room>
+    </div>
   );
 }

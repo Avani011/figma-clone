@@ -1,49 +1,12 @@
-import { createClient } from "@liveblocks/client";
+
 import { createRoomContext, createLiveblocksContext } from "@liveblocks/react";
   
-const client = createClient({
-   publicApiKey: process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY!,
-  async resolveUsers({ userIds }) {
-    // Used only for Comments and Notifications. Return a list of user information
-    // retrieved from `userIds`. This info is used in comments, mentions etc.
-    
-    // const usersData = await __fetchUsersFromDB__(userIds);
-    // 
-    // return usersData.map((userData) => ({
-    //   name: userData.name,
-    //   avatar: userData.avatar.src,
-    // }));
-    
-    return [];
-  },
-  async resolveMentionSuggestions({ text }) {
-    // Used only for Comments. Return a list of userIds that match `text`.
-    // These userIds are used to create a mention list when typing in the
-    // composer. 
-    //
-    // For example when you type "@jo", `text` will be `"jo"`, and 
-    // you should to return an array with John and Joanna's userIds:
-    // ["john@example.com", "joanna@example.com"]
+import { createClient } from "@liveblocks/client";
 
-    // const users = await getUsers({ search: text });
-    // return users.map((user) => user.id);
-
-    return [];
-  },
-  async resolveRoomsInfo({ roomIds }) {
-    // Used only for Comments and Notifications. Return a list of room information
-    // retrieved from `roomIds`.
-    
-    // const roomsData = await __fetchRoomsFromDB__(roomIds);
-    // 
-    // return roomsData.map((roomData) => ({
-    //   name: roomData.name,
-    //   url: roomData.url,
-    // }));
-    
-    return [];
-  },
+export const client = createClient({
+  publicApiKey: process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY!, // Ensure this is correctly set
 });
+
 
 // Presence represents the properties that exist on every user in the Room
 // and that will automatically be kept in sync. Accessible through the
@@ -102,9 +65,9 @@ export const {
     useEventListener,
     useErrorListener,
     useStorage,
-    useObject,
-    useMap,
-    useList,
+    // useObject,
+    // useMap,
+    // useList,
     useBatch,
     useHistory,
     useUndo,
