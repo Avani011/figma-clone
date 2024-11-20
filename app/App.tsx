@@ -277,6 +277,8 @@ const Home = () => {
       fabricRef,
     });
 
+    const currentFabricRef = fabricRef.current;
+
     /**
      * listen to the mouse down event on the canvas which is fired when the
      * user clicks on the canvas
@@ -457,7 +459,9 @@ const Home = () => {
        *
        * dispose: http://fabricjs.com/docs/fabric.Canvas.html#dispose
        */
-      canvas.dispose();
+      if (currentFabricRef) {
+        currentFabricRef.dispose();
+      }
 
       // remove the event listeners
       window.removeEventListener("resize", () => {
@@ -477,7 +481,7 @@ const Home = () => {
         })
       );
     };
-  }, [canvasRef]); // run this effect only once when the component mounts and the canvasRef changes
+  }, [canvasRef, deleteShapeFromStorage, redo, syncShapeInStorage, undo]); // run this effect only once when the component mounts and the canvasRef changes
 
   // render the canvas when the canvasObjects from live storage changes
   useEffect(() => {
