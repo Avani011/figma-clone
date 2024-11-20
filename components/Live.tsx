@@ -173,7 +173,7 @@ const Live = ({ canvasRef, undo, redo }: Props) => {
         });
       }
     },
-    [cursor, cursorState.mode, updateMyPresence]
+    [cursorState.mode, updateMyPresence]
   );
 
   // Hide the cursor when the mouse leaves the canvas

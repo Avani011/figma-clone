@@ -47,7 +47,7 @@ const ActiveUsers = () => {
         )}
       </div>
     );
-  }, [others, currentUser]);
+  }, [currentUser, others]);
 
   return memoizedUsers;
 };

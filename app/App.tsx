@@ -481,7 +481,7 @@ const Home = () => {
         })
       );
     };
-  }, [canvasRef, deleteShapeFromStorage, redo, syncShapeInStorage, undo]); // run this effect only once when the component mounts and the canvasRef changes
+  }, [fabricRef, deleteShapeFromStorage, redo, syncShapeInStorage, undo]); // run this effect only once when the component mounts and the canvasRef changes
 
   // render the canvas when the canvasObjects from live storage changes
   useEffect(() => {

@@ -74,7 +74,7 @@ export const PinnedThread = ({ thread, onFocus, ...props }: Props) => {
         ) : null}
       </div>
     ),
-    [thread.comments.length, minimized]
+    [thread.comments.length, minimized, onFocus, props, thread]
   );
 
   return <>{memoizedContent}</>;

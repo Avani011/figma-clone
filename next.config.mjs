@@ -1,14 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config) => {
-    config.externals.push({
-      "utf-8-validate": "commonjs utf-8-validate",
-      bufferutil: "commonjs bufferutil",
-      canvas: "commonjs canvas",
-    });
-    // config.infrastructureLogging = { debug: /PackFileCache/ };
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      // Prevent fabric and canvas from being included in the server bundle
+      config.externals.push({
+        fabric: "commonjs fabric",
+        canvas: "commonjs canvas",
+      });
+    }
     return config;
   },
+
   images: {
     remotePatterns: [
       {
@@ -18,8 +20,9 @@ const nextConfig = {
       },
     ],
   },
+
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true, // Temporarily ignore build errors until resolved
   },
 };
 
